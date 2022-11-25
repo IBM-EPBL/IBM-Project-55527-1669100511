@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Source+Code+Pro&display=swap');
+
+* {
+  font-family:'Poppins', sans-serif;
+}
+
+body{
+  background-color: white;
+  overflow: hidden;
+}
+.topnav {
+  background-color: #272C30;
+  margin-top: 20px;
+  height:160px;
+  margin-left:200px;
+  margin-right:200px;
+}
+div{
+    margin-bottom: 0px;
+    line-height: 0.1em;
+}
+.div-logo img{
+    height: 20%;
+    top:30px;
+    left:260px;
+    position: fixed;
+    width:160px;
+    height:140px;
+    border-radius: 10px;
+   
+}
+.right-logo {
+    float: right;
+    margin-left: 500px;
+    margin-right: 80px;
+    margin-top:25px;
+}
+.top-text{
+   color:white;
+
+   margin-left:300px;
+}
+.main{
+   background-color:#D7D2E0;
+   height:500px;
+   padding-top: 0px;
+   margin-left:200px;
+   margin-right:200px;
+}
+.text{
+
+   margin-left:35px;
+   margin-top:0px;
+   line-height: 1.2em;
+}
+.right-text{
+
+   float:right;
+   margin-right:320px;
+   margin-top: 15px;
+
+}
+.last{
+  line-height: 0.8em;
+  margin-left: 20px;
+}
+.last-right{
+
+  margin-left:400px;
+  
+} 
+
+progress{
+  width: 80%;
+  border-radius: 10px;
+}
+progress {
+  color: lightblue;
+  margin-right: 100px;
+}
+
+progress::-moz-progress-bar {
+  background: lightcolor;
+}
+
+progress::-webkit-progress-value {
+  background: #272C30;
+}
+
+progress::-webkit-progress-bar {
+  background: progress ;
+  color: lightblue;
+}
+
+progress::-moz-progress-bar {
+  background: lightcolor;
+}
+
+progress::-webkit-progress-value {
+  background: #272C30;
+}
+
+progress::-webkit-progress-bar {
+  background: #fff;
+};
