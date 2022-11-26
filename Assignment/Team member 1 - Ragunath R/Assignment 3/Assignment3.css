@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Source+Code+Pro&display=swap');
+* {
+  font-family:'Poppins', sans-serif;
+}
+body{
+  background-color: white;
+  overflow: hidden;
+}
+.topnav {
+  background-color: #272C30 !important;
+  margin-top: 20px;
+  height:160px;
+  margin-left:200px;
+  margin-right:200px;
+}
+div{
+    margin-bottom: 0px;
+    line-height: 0.1em;
+}
+
+.top-text{
+   font-family: "Times New Roman", Times, serif;
+   color:white;
+   margin-top: 0px;
+   margin-left:400px;
+}
+img{
+  margin-right:100px;
+  margin-left:100px;
+  margin-top:30px;
+}
