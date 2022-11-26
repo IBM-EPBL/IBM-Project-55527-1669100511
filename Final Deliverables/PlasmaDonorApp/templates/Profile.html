@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&family=Open+Sans:wght@300;400;800&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <!-- jquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../static/css/donor_profile.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            <span>WE4U</span>
+        </div>
+        <div class="nav-items">
+            <span><a href="{{ url_for('Landing_home',id=id) }}" >Home</a></span>
+            <span><a href="{{ url_for('Donor_Search',id=id) }}">Search Donor</a></span>
+            <span><a href="{{ url_for('Donate',id=id) }}">Donate</a></span>
+            <span><a href="{{ url_for('Landing_home',id=id) }}">Emergency</a></span>
+            <span><a href="{{ url_for('Profile',id=id) }}" class="active">Profile</a></span>
+           
+        </div>
+    </div>
+    
+    <div class="sidenav">
+        <img src="../static/images/profile.png" class="image">
+        <a href="{{ url_for('Donated_history',id=id) }}">Donated History</a><br>
+        <a href="{{ url_for('Recipient_request',id=id) }}">Receipient Requests</a><br>
+        <a href="{{ url_for('Get_rewards',id=id) }}">Rewards</a><br>
+        <a href="{{ url_for('Profile',id=id) }}">Update profile</a><br>
+        <a href="{{ url_for('Logout') }}">Logout</a><br>
+        
+
+
+        <span class="icons">
+            <img src="../static/images/twitter.png" alt="" class="icons1">
+            <img src="../static/images/facebook-circular-logo .png" alt="" class="icons1">
+            <img src="../static/images/instagram.png" alt="" class="icons1">
+            <img src="../static/images/whatsapp.png" alt="" class="icons1">
+        </span>
+    </div>
+    <div class="right" style="margin-left:600px">
+            <div class="signup-form">
+                <form style="margin-left:80px;" action = "{{ url_for('Profile',id = id) }}" method = "POST">
+                    <b><h3 class="fonts" style="margin-left:50px">Update Profile</h3></b>
+                    <span>
+                        <label for = "username" class="username">UserName</label>
+                        <input type="text" name="username" placeholder="Enter user name" class="form-input" value="{{data['NAME']}}"><br>
+                    </span>
+                    <span>
+                        <label for = "email" class="email">Email</label>
+                        <input type="text" name="email" placeholder="Enter email" class="form-input" value="{{data['EMAIL']}}"><br>
+                    </span>
+                    <span>
+                        <label for = "password" class="password">Password</label>
+                        <input type="password" name="password" id="myInput" class="form-input" placeholder="Enter Password" style="width:140px" value="{{data['PASSWORD']}}">
+                        <img src="../static/images/view.png" id="myInputicon" onclick="myFunction()" height="20px" width="20px" margin-left="5px">
+                    </span>
+                  
+                    <!-- <i class="far fa-eye" id="myInput" style="margin-left:100px"onclick="myFunction()">&emsp;Show Password</i> -->
+                    <script>
+                    function myFunction() {
+                    var x = document.getElementById("myInput");
+                    
+                    if (x.type === "password") {
+                        x.type = "text";
+                        document.getElementById("myInputicon").setAttribute("src","../static/images/hidden.png");
+                    } else {
+                        x.type = "password";
+                        document.getElementById("myInputicon").setAttribute("src","../static/images/view.png");
+                    }
+                    }
+                    </script>
+                    <span>
+                        <label for = "mobileno" class="mobileno">Mobileno</label>
+                        <input type="text" name="mobileno" placeholder="Enter mobile no" class="form-input" value="{{data['MOBILE_NO']}}"> 
+                    </span>
+                    <span>
+                        <label for = "age" class="age">Age</label>
+                        <input type="text" name="age" placeholder="Enter age" class="form-input" value="{{data['AGE']}}">
+                    </span>
+                    <span>
+                        <label for = "blood group" class="blood group">Blood Group:</label>
+                        <input type="text" name="bloodgroup" placeholder="Enter blood group" class="form-input" value="{{data['BLOOD_GROUP']}}">
+                    </span>
+                    <span>
+                        <label for = "dob" class="dob">Date of Birth:</label>
+                        <input type="date" name="dob" placeholder="Enter date of birth" class="form-input" value="{{data['DATE_OF_BIRTH']}}">
+                    </span>
+                    <span>
+                        <label for = "weight" class="weight">Weight:</label>
+                        <input type="number" name="weight" placeholder="Enter weight" class="form-input" value="{{data['WEIGHT']}}">
+                    </span>
+                    <span>
+                        <label for = "gender" class = "lbl"> Gender </label>
+                        &emsp;&emsp;&emsp;<input type="radio" name="Gender" value="Male" {{ 'checked' if data.Gender == 'Male'}} class="lbl">Male
+                        &emsp;<input type="radio" name="Gender" value="Female" {{ 'checked' if data.GENDER == 'Female'}} class="lbl">Female
+                    </span>
+                    
+                    <span>
+                        <label for="state">State   </label>
+                        <select class="form-input" id="state"name="State" style="width: 180px;" required> 
+                            <option value="SelectState" {{ 'selected' if data.STATE == 'SelectState'}}> Select States</option>
+                            <option value="Andra Pradesh" {{ 'selected' if data.STATE == 'Andra Pradesh'}}>Andra Pradesh</option>
+                            <option value="Arunachal Pradesh" {{ 'selected' if data.STATE == 'Arunachal Pradesh'}}>Arunachal Pradesh</option>
+                            <option value="Assam" {{ 'selected' if data.STATE == 'Assam'}}>Assam</option>
+                            <option value="Bihar" {{ 'selected' if data.STATE == 'Bihar'}}>Bihar</option>
+                            <option value="Chhattisgarh" {{ 'selected' if data.STATE == 'Chhattisgarh'}}>Chhattisgarh</option>
+                            <option value="Goa" {{ 'selected' if data.STATE == 'Goa'}}>Goa</option>
+                            <option value="Gujarat" {{ 'selected' if data.STATE == 'Gujarat'}}>Gujarat</option>
+                            <option value="Haryana" {{ 'selected' if data.STATE == 'Haryana'}}>Haryana</option>
+                            <option value="Himachal Pradesh" {{ 'selected' if data.STATE == 'Himachal Pradesh'}}>Himachal Pradesh</option>
+                            <option value="Jammu and Kashmir" {{ 'selected' if data.STATE== 'Jammu and Kashmir'}}>Jammu and Kashmir</option>
+                            <option value="Jharkhand" {{ 'selected' if data.STATE == 'Jharkhand'}}>Jharkhand</option>
+                            <option value="Karnataka" {{ 'selected' if data.STATE == 'Karnataka'}}>Karnataka</option>
+                            <option value="Kerala" {{ 'selected' if data.STATE == 'Kerala'}}>Kerala</option>
+                            <option value="Madya Pradesh" {{ 'selected' if data.STATE == 'Madya Pradesh'}}>Madya Pradesh</option>
+                            <option value="Maharashtra" {{ 'selected' if data.STATE == 'Maharashtra'}}>Maharashtra</option>
+                            <option value="Manipur" {{ 'selected' if data.STATE == 'Manipur'}}>Manipur</option>
+                            <option value="Meghalaya" {{ 'selected' if data.STATE == 'Meghalaya'}}>Meghalaya</option>
+                            <option value="Mizoram" {{ 'selected' if data.STATE == 'Mizoram'}}>Mizoram</option>
+                            <option value="Nagaland" {{ 'selected' if data.STATE == 'Nagaland'}}>Nagaland</option>
+                            <option value="Orissa" {{ 'selected' if data.STATE == 'Orissa'}}>Orissa</option>
+                            <option value="Punjab" {{ 'selected' if data.STATE == 'Punjab'}}>Punjab</option>
+                            <option value="Rajasthan" {{ 'selected' if data.STATE == 'Rajasthan'}}>Rajasthan</option>
+                            <option value="Sikkim" {{ 'selected' if data.STATE == 'Sikkim'}}>Sikkim</option>
+                            <option value="Tamil Nadu" {{ 'selected' if data.STATE == 'Tamil Nadu'}}>Tamil Nadu</option>
+                            <option value="Telangana" {{ 'selected' if data.STATE == 'Telangana'}}>Telangana</option>
+                            <option value="Tripura" {{ 'selected' if data.STATE == 'Tripura'}}>Tripura</option>
+                            <option value="Uttaranchal" {{ 'selected' if data.STATE == 'Uttaranchal'}}>Uttaranchal</option>
+                            <option value="Uttar Pradesh" {{ 'selected' if data.STATE == 'Uttar Pradesh'}}>Uttar Pradesh</option>
+                            <option value="West Bengal" {{ 'selected' if data.STATE == 'West Bengal'}}>West Bengal</option>
+                            <option disabled style="background-color:#aaa; color:#fff" {{ 'selected' if data.STATE == 'UNION Territories'}}>UNION Territories</option>
+                            <option value="Andaman and Nicobar Islands" {{ 'selected' if data.STATE == 'Andaman and Nicobar Islands'}}>Andaman and Nicobar Islands</option>
+                            <option value="Chandigarh"{{ 'selected' if data.STATE == 'Chandigarh'}}>Chandigarh</option>
+                            <option value="Dadar and Nagar Haveli" {{ 'selected' if data.STATE == 'Dadar and Nagar Haveli'}}>Dadar and Nagar Haveli</option>
+                            <option value="Daman and Diu" {{ 'selected' if data.STATE == 'Daman and Diu'}}>Daman and Diu</option>
+                            <option value="Delhi" {{ 'selected' if data.STATE == 'Delhi'}}>Delhi</option>
+                            <option value="Lakshadeep" {{ 'selected' if data.STATE == 'Lakshadeep'}}>Lakshadeep</option>
+                            <option value="Pondicherry" {{ 'selected' if data.STATE == 'Pondicherry'}}>Pondicherry</option>
+                        </select>
+                    </span>
+                    
+                    <span>
+                        <label for="district">District</label>
+                        <select  class="form-input" id="district"  name="District" style="width: 180px;" required >
+                            <option value="{{data.DISTRICT}}">Select District</option>
+                        </select>
+                        
+                    </span>
+                    <span>
+                        <label for = "area" class="area">Area:</label>
+                        <input type="text" name="area" placeholder="Enter the area" class="form-input" value = "{{data.AREA}}">
+                    </span>
+                    <br>
+                    <button type="submit" name="signup" class="form-input signup-btn" >Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+<!-- plugin for jquery validation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"> </script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- link for jquery validation -->
+<script src = "{{('../static/jquery/location.js')}}"> </script>
+</html>

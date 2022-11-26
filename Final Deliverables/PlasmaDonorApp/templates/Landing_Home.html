@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&family=Open+Sans:wght@300;400;800&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Patient_home.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            <span>WE4U</span>
+        </div>
+        <div class="nav-items">
+            <span><a href="{{ url_for('Landing_home',id=id) }}" class="active">Home</a></span>
+            <span><a href="{{ url_for('Donate',id=id) }}">Donate</a></span>
+            <span><a href="{{ url_for('Donor_Search',id=id) }}">Search Donor</a></span>
+            <span><a href="{{ url_for('Landing_home',id=id) }}">Emergency</a></span>
+            <span><a href="{{ url_for('Profile', id=id) }}">Profile</a></span>
+        </div>
+        <a href="{{ url_for('Home') }}" class="logout-btn">Logout</a>
+    </div>
+    <div class="full-body">
+        <div class="body-container">
+            <div class="left">
+                <div class="heading">
+                    Say Hi to <span> Robbie!</span>
+                </div>
+                <div class="rob-points">
+                    <span>
+                        <img class="checked-icon1" src="{{ url_for('static', filename='images/checked.png') }}" width="30px" height="30px"></img>
+                        Tell him your problems
+                    </span>
+                    <span>
+                        <img class="checked-icon2" src="{{ url_for('static', filename='images/checked.png') }}" width="30px" height="30px"></img>
+                        Ask him all your doubts
+                    </span>
+                    <span>
+                        <img class="checked-icon3" src="{{ url_for('static', filename='images/checked.png') }}" width="30px" height="30px" ></img>
+                        <span style="margin-left:30px;">Get on the spot prescriptions</span>
+                    </span>
+                </div>
+                <div class="rob-below"><b>Robbie </b>is here to help you out!</div>
+            </div>
+            <div>
+                <script>
+                    window.watsonAssistantChatOptions = {
+                      integrationID: "85075d62-bd71-4743-9a41-f1f813e5e744", // The ID of this integration.
+                      region: "au-syd", // The region your integration is hosted in.
+                      serviceInstanceID: "46b7f1d8-e3f9-45dd-ad94-b5f6e2a73d73", // The ID of your service instance.
+                      onLoad: function(instance) { instance.render(); }
+                    };
+                    setTimeout(function(){
+                      const t=document.createElement('script');
+                      t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+                      document.head.appendChild(t);
+                    });
+                  </script>
+            </div>
+        </div>
+        
+        
+        
+        <div class="footer">
+            <div class="for-patients">
+                <span class="footer-title">For Donors</span>
+                <span><a href="#">Check Rewards</a></span>
+                <span><a href="#">Accept/Decline Plasma request</a></span>
+                <span><a href="#">View History</a></span>
+                <span><a href="#">Edit Profile</a></span>
+            </div>
+            <div class="for-doctors">
+                <span class="footer-title">For Recipients</span>
+                <span><a href="#">Filter Donors</a></span>
+                <span><a href="#">Request Donor</a></span>
+                <span><a href="#">History</a></span>
+                <span><a href="#">Edit Profile</a></span>
+            </div>
+            <div class="contacts">
+                <span class="footer-title">Social Contacts</span>
+                <span class="icons">
+                    <br>
+                    <img src="../static/images/twitter.png" alt="">
+                    <img src="../static/images/facebook-circular-logo.png" alt="">
+                    <img src="../static/images/instagram.png" alt="">
+                    <img src="../static/images/whatsapp.png" alt="">
+                </span>
+                <span>All rights reserved <img src="../static/images/copyright.png" alt="" style="width:16px; height:16px;margin-right:0px;"> Hackaholics</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+<!-- plugin for jquery validation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"> </script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="../static/jquery/Patient_home.js"></script>
+</html>

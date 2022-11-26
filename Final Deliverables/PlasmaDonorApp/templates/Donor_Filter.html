@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&family=Open+Sans:wght@300;400;800&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap"
+      rel="stylesheet"
+    />
+    <!-- jquery -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+      type="text/javascript"
+    ></script>
+    <!-- Font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/Patient_home.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/consultation_patient_filter.css') }}"
+    />
+    <title>Donor Filter</title>
+  </head>
+  <body style="background-color: #f0f5f7">
+    <div class="nav">
+      <div class="logo">
+        <span>WE4U</span>
+      </div>
+      <div class="nav-items">
+        <span><a href="{{ url_for('Landing_home',id=id) }}">Home</a></span>
+        <span><a href="{{ url_for('Donate',id=id) }}">Donate</a></span>
+        <span
+          ><a href="{{ url_for('Donor_Search',id=id) }}" class="active"
+            >Search Donor</a
+          ></span
+        >
+        <span><a href="{{ url_for('Landing_home',id=id) }}">Emergency</a></span>
+        <span><a href="{{ url_for('Profile', id=id) }}">Profile</a></span>
+      </div>
+      <a href="{{ url_for('Home') }}" class="logout-btn">Logout</a>
+    </div>
+    <div class="full_body">
+      <div class="header">
+        Here are the Donors who are available
+        <a href="#" class="logout-btn" style="float: right">Requested Donors</a>
+      </div>
+
+      <form action="#" method="POST">
+        <div class="filter">
+          <span>
+            <label for="sortby">Sort By:</label>
+            <span class="dropdown">
+              <button
+                type="button"
+                class="dropdown-button-1"
+                data-toggle="dropdown"
+              >
+                --Select--
+              </button>
+              <div class="dropdown-menu 1" style="left: 500px">
+                <a
+                  class="dropdown-item"
+                  href="{{ url_for('Donor_Filter',id=id,filter='null',bloodgroup=bloodgroup,state=state,district=district) }}"
+                  >--Select--</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="{{ url_for('Donor_Filter',id=id,filter='agelth',bloodgroup=bloodgroup,state=state,district=district) }}"
+                  >Age Low to High</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="{{ url_for('Donor_Filter',id=id,filter='agehtl',bloodgroup=bloodgroup,state=state,district=district) }}"
+                  >Age High to Low</a
+                >
+              </div>
+            </span>
+          </span>
+          <span>
+            <label for="gender">Gender:</label>
+            <span class="dropdown">
+              <button
+                type="button"
+                class="dropdown-button-2"
+                data-toggle="dropdown"
+              >
+                --Select--
+              </button>
+              <div class="dropdown-menu 2">
+                <a
+                  class="dropdown-item"
+                  href="{{ url_for('Donor_Filter',id=id,filter='null',bloodgroup=bloodgroup,state=state,district=district) }}"
+                  >--Select--</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="{{ url_for('Donor_Filter',id=id,filter='genderm',bloodgroup=bloodgroup,state=state,district=district) }}"
+                  >Male</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="{{ url_for('Donor_Filter',id=id,filter='genderf',bloodgroup=bloodgroup,state=state,district=district) }}"
+                  >Female</a
+                >
+              </div>
+            </span>
+          </span>
+        </div>
+      </form>
+      <script>
+        document
+          .getElementsByClassName("dropdown-button-1")[0]
+          .addEventListener("click", function () {
+            if (
+              document.getElementsByClassName("dropdown-menu 1")[0].style
+                .display == "flex"
+            ) {
+              document.getElementsByClassName(
+                "dropdown-menu 1"
+              )[0].style.display = "none";
+            } else {
+              document.getElementsByClassName(
+                "dropdown-menu 1"
+              )[0].style.display = "flex";
+            }
+          });
+        document
+          .getElementsByClassName("dropdown-button-2")[0]
+          .addEventListener("click", function () {
+            if (
+              document.getElementsByClassName("dropdown-menu 2")[0].style
+                .display == "flex"
+            ) {
+              document.getElementsByClassName(
+                "dropdown-menu 2"
+              )[0].style.display = "none";
+            } else {
+              document.getElementsByClassName(
+                "dropdown-menu 2"
+              )[0].style.display = "flex";
+            }
+          });
+      </script>
+      <br />
+      <div class="list-of-doctors">
+        {% if data%} {% for i in data %}
+        <!-- Name | Age |  Area | District | State | Rewards |  Request btn -->
+        <div class="cards">
+          <div class="profile">
+            <img
+              src="{{ url_for('static', filename='images/user.png') }}"
+              alt=""
+              width="100px"
+              height="100px"
+            />
+          </div>
+          <div class="name-about">
+            <span class="name">
+              {{i.NAME}} &nbsp;&nbsp;&nbsp;&nbsp;<img
+                src="{{ url_for('static', filename='images/new-moon.png') }}"
+                alt=""
+                width="10px"
+                height="10px"
+              />
+              &nbsp;available
+            </span>
+            <span class="about">{{i.AGE}} yrs old</span>
+            <span class="about">{{i.AREA}}</span>
+          </div>
+          <div class="education-speciality-rating">
+            <span>{{i.MOBILE_NO}}</span>
+            <span
+              >Rating:
+              <img
+                src="{{ url_for('static', filename='images/star.png') }}"
+                alt=""
+                width="15px"
+                height="15px"
+              />
+              <img
+                src="{{ url_for('static', filename='images/star.png') }}"
+                alt=""
+                width="15px"
+                height="15px"
+              />
+              <img
+                src="{{ url_for('static', filename='images/star.png') }}"
+                alt=""
+                width="15px"
+                height="15px"
+              />
+              <img
+                src="{{ url_for('static', filename='images/star-grey.png') }}"
+                alt=""
+                width="15px"
+                height="15px"
+              />
+              <img
+                src="{{ url_for('static', filename='images/star-grey.png') }}"
+                alt=""
+                width="15px"
+                height="15px"
+              />
+            </span>
+          </div>
+          <div class="experience-location-fees">
+            <span>Email: {{i.EMAIL}}</span>
+            <span>{{i.DISTRICT}}, {{i.STATE}}</span>
+          </div>
+          <a
+            href="{{ url_for('Location_enter',donor_id=i.ID, donor_name=i.NAME, recipient_id=id) }}"
+            class="logout-btn"
+            >Request</a
+          >
+        </div>
+        {% endfor %} {% endif %}
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- plugin for jquery validation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate History</title>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabriela&family=Montserrat:wght@300&family=Open+Sans&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}">
+
+</head>
+<body>
+    <header>
+        <div class="navigation">
+            <div class="logo">WE4U</div>
+            <div class="nav-items">
+                <span><a href="{{ url_for('Landing_home',id=id) }}">Home</a></span>
+                <span
+                  ><a href="{{ url_for('Donate',id=id) }}" class="active"
+                    >Donate</a
+                  ></span
+                >
+                <span
+                  ><a href="{{ url_for('Donor_Search',id=id) }}">Search Donor</a></span
+                >
+                <span><a href="{{ url_for('Landing_home',id=id) }}">Emergency</a></span>
+                <span><a href="{{ url_for('Profile', id=id) }}">Profile</a></span>
+              </div>
+              <a href="#" class="logout-btn">Logout</a>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 doc">
+              <div class="sidenav">
+                <img src="../static/images/profile.png" class="image">
+                <a href="{{ url_for('Donated_history',id=id) }}">Donated History</a><br>
+                <a href="{{ url_for('Recipient_request',id=id) }}">Receipient Requests</a><br>
+                <a href="{{ url_for('Get_rewards',id=id) }}">Rewards</a><br>
+                <a href="{{ url_for('Profile',id=id) }}">Update profile</a><br>
+                <a href="{{ url_for('Logout') }}">Logout</a><br>
+                <span class="icons">
+                    <img src="{{ url_for('static', filename='images/twitter.png') }}" alt="" class="icons1">
+                    <img src="{{ url_for('static', filename='images/facebook-circular-logo .png') }}" alt="" class="icons1">
+                    <img src="{{ url_for('static', filename='images/instagram.png') }}" alt="" class="icons1">
+                    <img src="{{ url_for('static', filename='images/whatsapp.png') }}" alt="" class="icons1">
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-9" style="margin-top:100px">
+              <h4 style="margin-left:250px;color:rgb(92, 163, 175);font-size: 25px;">Donated History</h4>
+              <table class="font"style="width:90%">
+                <tr>
+                  <th>Sno</th>
+                  <th>Recipient Name</th>
+                  <th>Date of Donation</th>
+                  <th>Blood Group</th>
+                  <th>Location</th>
+                  <th>Status</th>
+                </tr>
+                <br>
+                <br>
+                {% if data %}
+                {% set count = namespace(value=1) %}
+                {% for row in data %}
+                <tr>
+                  <td>{{ count.value }}</td>
+                  <td>{{ row.RECIPIENT_NAME }}</td>
+                  <td>{{ row.DATE_OF_DONATION }}</td>
+                  <td>{{ row.BLOOD_GROUP }}</td>
+                  <td>{{ row.LOCATION }}</td>
+                  <td>{{ row.STATUS }}</td>
+                  {% set count.value = count.value + 1 %}
+                </tr>
+                {% endfor %}
+                {% endif %}
+              </table>
+              
+            </div>
+            
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+    <!-- plugin for jquery validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"> </script>
+    
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>
