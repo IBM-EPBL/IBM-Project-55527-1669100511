@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="navigation" content="width=device-width,initial-scale=1.0">
+        <title>WE4U</title>
+        
+        <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gabriela&family=Montserrat:wght@300&family=Open+Sans&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../static/css/Home.css">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="navigation">
+                    <div class="logo">WE4U</div>
+                    <div class="links">                   
+                        <span><a style="color:white;text-decoration: none;margin-top: 25px;" href="{{ url_for('Login') }}">LOGIN</a></span>              
+                        <a class="button" href="{{ url_for('Register') }}">SIGNUP</a>
+                    </div>
+                </div>
+            </header>
+            <div class="main">
+                <div class="main-text">
+                    <div class="main-large"><h1 style="font-size: 62px;">WE CARE FOR U</h1>
+                    <h5 style="font-size:25px;margin-left: 15px;"> Donate Plasma. Save Life!<br></h5>
+                    <button class="button2" href="{{ url_for('Login') }}">GET STARTED</button></div>
+                    
+                </div>
+           
+                <div class="main-image">
+                    <img src="../static/images/main.jpg" alt="" style="width: 500px;height: 400px; margin-right: 370px;" >
+                </div>
+                
+           
+                <div class="main-content">
+                    <div class="content">
+                        <br>
+                        <h1>Skip the Donation Bank<br>Get Donor Instantly<br></h1>
+                     
+                        <div class="content-tick">
+                            <h5>&nbsp;&nbsp;&nbsp;&nbsp;<img class="tick"src="../static/images/tick.png">Filter nearby Donors</h5>
+                            <h5>&nbsp;&nbsp;&nbsp;&nbsp;<img class="tick"src="../static/images/tick.png">Verified Eligible Donors</h5>
+                            <h5>&nbsp;&nbsp;&nbsp;&nbsp;<img class="tick"src="../static/images/tick.png">Track the Donors</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="container2">
+                        <div class="col-sm-5">
+                            <img src="../static/images/chatbot.png" alt="ChatBot">
+                        </div>
+                        <div class="col-sm-7">
+                            <h1>Hey there.. Robbie here! </h1>
+                            <h2>I can help with any sort of <br>queries for Plasma Donation</h2>
+                            <h2>Don't Wait..<br>Tell me your problem<br>Get Plasma!</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <br>
+            <div class="footer">
+                <div class="for-patients">
+                    <span class="footer-title">For Donors</span>
+                    <span><a href="#">Check Rewards</a></span>
+                    <span><a href="#">Accept/Decline Plasma request</a></span>
+                    <span><a href="#">View History</a></span>
+                    <span><a href="#">Edit Profile</a></span>
+                </div>
+                <div class="for-doctors">
+                    <span class="footer-title">For Recipients</span>
+                    <span><a href="#">Filter Donors</a></span>
+                    <span><a href="#">Request Donor</a></span>
+                    <span><a href="#">History</a></span>
+                    <span><a href="#">Edit Profile</a></span>
+                </div>
+                <div class="contacts">
+                    <span class="footer-title">Social Contacts</span>
+                    <span class="icons">
+                        <br>
+                        <img src="../static/images/twitter.png" alt="">
+                        <img src="../static/images/facebook-circular-logo.png" alt="">
+                        <img src="../static/images/instagram.png" alt="">
+                        <img src="../static/images/whatsapp.png" alt="">
+                    </span>
+                    <span>All rights reserved <img src="../static/images/copyright.png" alt="" style="width:16px; height:16px;margin-right:0px;"> Hackaholics</span>
+                </div>
+            </div>
+  
+        </div>
+    </body>
+    
+</html>
+
+
